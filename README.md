@@ -159,4 +159,4 @@ SWAPNIL KUMAR
 
 🪪 License
 This project is licensed under the MIT License — you’re free to use, modify, and distribute with attribution.
-MIT License © 2025 Your Name
+MIT License © 2025 Swapnil Kumar
