@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Post New Job</title>
+    <link rel="stylesheet" href="postjob.css">
+    <script src="postjob.js" defer></script>
+
+</head>
+<body>
+    <h2>Post New Job</h2>
+    <form action="postjob.php" method="POST">
+        <input type="text" name="job_title" placeholder="Job Title" required><br>
+        <textarea name="job_desc" placeholder="Job Description"></textarea><br>
+        <input type="text" name="location" placeholder="Location" required><br>
+        <input type="number" name="salary" placeholder="Salary" required><br>
+        <input type="date" name="deadline"><br>
+        <button type="submit">Post Job</button>
+    </form>
+    <a href="jobs.php">Back to jobs</a>
+</body>
+</html>

@@ -1,0 +1,28 @@
+# Ignore private credentials
+db.php
+.env
+*.log
+*.sql
+
+# Uploaded files
+uploads/
+resumes/
+
+# Python virtual environments or cache
+venv/
+__pycache__/
+*.pyc
+
+# IDE/editor settings
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Node or build folders (if you ever add JS tools)
+node_modules/
+dist/
+build/
+
+# Composer vendor folder (if you add PHP packages)
+vendor/

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - Job Portal</title>
+    <link rel="stylesheet" href="loginandregister.css">
+    <script src="loginandregister.js"></script>
+
+</head>
+<body>
+    <h2>Register</h2>
+    <form action="register.php" method="POST">
+        <input type="text" name="username" placeholder="Username" required><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <select name="role">
+            <option value="jobseeker">Jobseeker</option>
+            <option value="employer">Employer</option>
+        </select><br>
+        <button type="submit">Register</button>
+    </form>
+    <p>Already have account? <a href="login.html">Login here</a></p>
+</body>
+</html>

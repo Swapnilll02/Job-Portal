@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Login | Job Portal</title>
+  <link rel="stylesheet" href="loginandregister.css">
+  <script src="loginandregister.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Job Portal Login</h2>
+    <form action="login.php" method="POST">
+      <div class="input-row">
+        <label for="username">Username</label>
+        <div class="input-wrap">
+          <input id="username" type="text" name="username" placeholder="Username" required>
+        </div>
+      </div>
+
+      <div class="input-row">
+        <label for="password">Password</label>
+        <div class="input-wrap">
+          <input id="password" type="password" name="password" placeholder="Password" required>
+          <!-- the JS will inject the eye button here -->
+        </div>
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <p>Don't have an account? <a href="register.html">Register here</a></p>
+  </div>
+</body>
+</html>

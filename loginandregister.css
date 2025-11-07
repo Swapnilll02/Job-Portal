@@ -1,0 +1,208 @@
+/* ===== Job Portal — Professional UI ===== */
+:root {
+  --bg: #0f172a;             /* slate-900 */
+  --bg-accent: #111827;      /* gray-900 */
+  --card: #0b1023cc;         /* glassy card on dark bg */
+  --text: #e5e7eb;           /* gray-200 */
+  --muted: #9ca3af;          /* gray-400 */
+  --primary: #6366f1;        /* indigo-500 */
+  --primary-strong: #4f46e5; /* indigo-600 */
+  --ring: rgba(99, 102, 241, 0.5);
+  --danger: #ef4444;         /* red-500 */
+  --success: #22c55e;        /* green-500 */
+  --radius: 16px;
+  --shadow: 0 20px 45px rgba(0,0,0,.35);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f8fafc;
+    --bg-accent: #eef2ff;
+    --card: #ffffff;
+    --text: #0f172a;
+    --muted: #475569;
+    --shadow: 0 12px 30px rgba(2,6,23,.08);
+  }
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(99,102,241,.25), transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, rgba(16,185,129,.18), transparent 60%),
+    var(--bg);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  line-height: 1.5;
+}
+
+h2 {
+  margin: 0 0 20px;
+  font-size: clamp(1.4rem, 1.2rem + 1.2vw, 2rem);
+  letter-spacing: .3px;
+  text-align: center;
+}
+
+.container {
+  width: min(440px, 92vw);
+  background: var(--card);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px;
+  animation: rise .5s ease-out both;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px) scale(.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+form {
+  display: grid;
+  gap: 14px;
+  margin-top: 6px;
+}
+
+.input-row {
+  display: grid;
+  gap: 6px;
+}
+
+label {
+  font-size: .925rem;
+  color: var(--muted);
+}
+
+input[type="text"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(148,163,184,.35); /* slate-400/35 */
+  border-radius: 12px;
+  background: rgba(255,255,255,.05);
+  color: var(--text);
+  transition: border-color .15s ease, box-shadow .15s ease, background .15s ease, transform .05s ease;
+  outline: none;
+}
+
+input::placeholder { color: rgba(148,163,184,.8); }
+select { background-color: rgba(255,255,255,.06); }
+
+input:focus,
+select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--ring);
+  background: rgba(255,255,255,.08);
+}
+
+.input-wrap {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  inset: 0 8px 0 auto;
+  margin: auto 0;
+  height: 38px;
+  display: inline-grid;
+  place-items: center;
+  padding: 0 10px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.toggle-password:hover,
+.toggle-password:focus-visible {
+  color: var(--text);
+  background: rgba(255,255,255,.06);
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+button[type="submit"] {
+  margin-top: 6px;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(180deg, var(--primary), var(--primary-strong));
+  color: white;
+  font-weight: 600;
+  letter-spacing: .3px;
+  cursor: pointer;
+  transition: transform .06s ease, filter .15s ease, box-shadow .15s ease;
+  box-shadow: 0 10px 24px rgba(79,70,229,.35);
+}
+
+button[type="submit"]:hover { filter: brightness(1.05); }
+button[type="submit"]:active { transform: translateY(1px); }
+button[type="submit"][disabled] {
+  opacity: .6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+p {
+  margin: 14px 0 0;
+  text-align: center;
+  color: var(--muted);
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+a:hover { text-decoration: underline; }
+
+/* Inline errors & messages */
+.error {
+  margin-top: 4px;
+  font-size: .85rem;
+  color: var(--danger);
+}
+
+.success {
+  margin-top: 4px;
+  font-size: .9rem;
+  color: var(--success);
+}
+
+/* Password strength (register) */
+.meter {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(148,163,184,.25);
+  overflow: hidden;
+}
+.meter > span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #f59e0b, #22c55e);
+  transition: width .25s ease;
+  border-radius: inherit;
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+

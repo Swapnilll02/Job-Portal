@@ -1,0 +1,165 @@
+/* ===== Job Portal — Post Job UI ===== */
+:root{
+  --bg:#0f172a;
+  --card:#0b1023cc;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+  --primary:#6366f1;
+  --primary-strong:#4f46e5;
+  --ring:rgba(99,102,241,.45);
+  --danger:#ef4444;
+  --success:#22c55e;
+  --radius:16px;
+  --shadow:0 18px 40px rgba(0,0,0,.35);
+}
+
+@media (prefers-color-scheme: light){
+  :root{
+    --bg:#f8fafc;
+    --card:#ffffff;
+    --text:#0f172a;
+    --muted:#475569;
+    --shadow:0 12px 30px rgba(2,6,23,.08);
+  }
+}
+
+*,
+*::before,
+*::after{ box-sizing:border-box; }
+
+html,body{ height:100%; }
+
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  color:var(--text);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(99,102,241,.22), transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, rgba(16,185,129,.16), transparent 60%),
+    var(--bg);
+  line-height:1.5;
+  padding:24px;
+  display:grid;
+  place-items:center;
+}
+
+.wrapper{
+  width:min(760px, 94vw);
+  background:var(--card);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:24px;
+  animation:rise .45s ease-out both;
+}
+
+@keyframes rise{
+  from{ opacity:0; transform:translateY(8px) scale(.98); }
+  to{ opacity:1; transform:translateY(0) scale(1); }
+}
+
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:14px;
+}
+h2{ margin:0; font-size:clamp(1.3rem,1.1rem + 1.2vw,2rem); }
+a.back{
+  color:var(--primary);
+  text-decoration:none;
+  font-weight:600;
+}
+a.back:hover{ text-decoration:underline; }
+
+form{
+  display:grid;
+  gap:14px;
+  margin-top:8px;
+}
+
+.row{ display:grid; gap:6px; }
+label{ color:var(--muted); font-size:.95rem; }
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+textarea{
+  width:100%;
+  padding:12px 14px;
+  border:1px solid rgba(148,163,184,.35);
+  border-radius:12px;
+  background:rgba(255,255,255,.05);
+  color:var(--text);
+  outline:none;
+  transition:border-color .15s ease, box-shadow .15s ease, background .15s ease;
+}
+textarea{ min-height:120px; resize:vertical; }
+
+input::placeholder,
+textarea::placeholder{ color:rgba(148,163,184,.85); }
+
+input:focus,
+textarea:focus{
+  border-color:var(--primary);
+  box-shadow:0 0 0 4px var(--ring);
+  background:rgba(255,255,255,.07);
+}
+
+.help{
+  font-size:.85rem;
+  color:var(--muted);
+}
+
+.count{
+  font-size:.85rem;
+  color:var(--muted);
+  text-align:right;
+}
+
+.error{
+  color:var(--danger);
+  font-size:.88rem;
+  margin-top:2px;
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+  justify-content:flex-end;
+  margin-top:6px;
+}
+
+button[type="submit"]{
+  border:none;
+  padding:12px 16px;
+  border-radius:12px;
+  background:linear-gradient(180deg, var(--primary), var(--primary-strong));
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:0 10px 24px rgba(79,70,229,.32);
+  transition:filter .15s ease, transform .06s ease;
+}
+button[type="submit"]:hover{ filter:brightness(1.06); }
+button[type="submit"]:active{ transform:translateY(1px); }
+button[type="submit"][disabled]{ opacity:.6; cursor:not-allowed; box-shadow:none; }
+
+/* Toast */
+.toast{
+  position:fixed;
+  bottom:16px;
+  right:16px;
+  padding:12px 14px;
+  background:#111827;
+  color:#fff;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.1);
+  box-shadow:var(--shadow);
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity .2s ease, transform .2s ease;
+  z-index:9999;
+}
+.toast.show{ opacity:1; transform:translateY(0); }
